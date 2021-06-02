@@ -26,7 +26,7 @@ width_rf: Horizontal width of the receptive field (°)
 
 height_rf: Vertical height of the receptive field (°)
 
-fano_dg: Fano factor for drifting gratings
+fano_dg: Fano factor for a preferred pattern of drifting gratings
 
 frac_highpass: fraction of cells that prefer high-contrast stimulus
 
