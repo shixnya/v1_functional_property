@@ -18,9 +18,9 @@ pref_sf_sg: Preferred spatial frequency for static gratings (cycles / °)
 
 pref_tf_dg: Preferred temporal frequency for drifting gratings (Hz)
 
-firing_rate_rf: Firing rates during Gabor patch stimulus (receptive field measurement) (Hz)
+firing_rate_rf: Population average of the firing rates during the entire duration of the Gabor patch stimulus (receptive field measurement) (Hz)
 
-firing_rate_dg: Firing rates during drifting gratings stimulus (Hz)
+firing_rate_dg: Population average of the firing rates during the entire duration of the drifting gratings stimulus (Hz)
 
 width_rf: Horizontal width of the receptive field (°)
 
@@ -56,7 +56,8 @@ without a clear receptive field.
 
 Contrast response analysis is done similarly to the one introduced in
 Millman et al., eLife 2020 (https://elifesciences.org/articles/55130). Namely, the
-responses to contrast was fit with 3 different models (rising sigmoid (high-pass), falling sigmoid (low-pass), and rising + falling sigmoid product (band-pass)) and used
+responses to contrast was fit with 3 different models (rising sigmoid (high-pass),
+falling sigmoid (low-pass), and a product of rising and falling sigmoids (band-pass)) and used
 Akaike Information Criterion (AIC) to determine which model best explains the response.
 
 The code used for the above analysis are also included in the 'misc' folder, but they are
