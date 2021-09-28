@@ -18,6 +18,8 @@ pref_sf_sg: Preferred spatial frequency for static gratings (cycles / °)
 
 pref_tf_dg: Preferred temporal frequency for drifting gratings (Hz)
 
+firing_rate_sp: Population average of the firing rates during the first spontaneous activity segment in the session that is longer than 200 s. (Hz)
+
 firing_rate_rf: Population average of the firing rates during the entire duration of the Gabor patch stimulus (receptive field measurement) (Hz)
 
 firing_rate_dg: Population average of the firing rates during the entire duration of the drifting gratings stimulus (Hz)
