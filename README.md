@@ -1,10 +1,10 @@
-# V1 functional property table (version 1.1)
+# V1 functional property table (version 1.2)
 Functional properties of different cell types in the primary visual cortex (V1) derived from the Allen Institute extracellular electrophysiology (Neuropixels) data
 
 Please look at 'cortical_metric_table.ipynb' to see how the table is generated.
 
 ## Example table (median)
-![median_table](median_table1.1.png)
+![median_table](median_table1.2.png)
 
 n_cells_BO: Number of cells in 'Brain Observatory' sessions
 
