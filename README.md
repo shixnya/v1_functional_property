@@ -1,4 +1,4 @@
-# V1 functional property table (version 1.2)
+# V1 functional property table (version 1.4)
 
 Functional properties of different cell types in the primary visual cortex (V1) derived from the Allen Institute extracellular electrophysiology (Neuropixels) data
 
