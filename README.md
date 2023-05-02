@@ -1,9 +1,11 @@
 # V1 functional property table (version 1.2)
+
 Functional properties of different cell types in the primary visual cortex (V1) derived from the Allen Institute extracellular electrophysiology (Neuropixels) data
 
 Please look at 'cortical_metric_table.ipynb' to see how the table is generated.
 
 ## Example table (median)
+
 ![median_table](median_table1.2.png)
 
 n_cells_BO: Number of cells in 'Brain Observatory' sessions
@@ -37,27 +39,28 @@ frac_highpass: fraction of cells that prefer high-contrast stimulus
 The cells were categorized by the cortical layer, waveforms and opto-taggings.
 
 The layer information is taken from the repository of Neuropixels platform paper
-(https://github.com/AllenInstitute/neuropixels_platform_paper/tree/c29e59abedebe5f1f4f20739fe02c95f29d4556d)
+(<https://github.com/AllenInstitute/neuropixels_platform_paper/tree/c29e59abedebe5f1f4f20739fe02c95f29d4556d>)
 
 The neurons' waveforms were separated into broad spikes and narrow spikes (using
 the waveform on the maximum amplitude channel; PCA + Mixture of Gaussians clustering).
+Waveform analysis was done only for neurons that pass the default quality control (QC) tests (see here for details <https://allensdk.readthedocs.io/en/latest/_static/examples/nb/ecephys_quality_metrics.html>)
 Neurons with broad spikes without opto-tagging were considered as excitatory neurons.
 Neurons with narrow spikes without opto-tagging were considered as PV neurons.
 
 When the neurons were opto-tagged, they were classified accordingly to the type of
-the cre-line (PV, SST, VIP).
+the cre-line (PV, SST, VIP). When the neurons are opto-tagged, we do not use waveform to assign a cell type. (Therefore, we may be including some neurons that do not pass the default QC tests.)
 Because SST and VIP cells were small populations, we used both V1 and non-V1 opto-tagged
 neurons. PV and excitatory neurons were exclusively from V1.
 
 The table shown here is ony a small subset of availble features. For full feature set,
 please run the notebook and edit features to extract. Detailed descriptions of the data
-are available at ECEphys website (https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html).
+are available at ECEphys website (<https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html>).
 
 Width and weight that exceed 100° are ignored because they may be of the neurons
 without a clear receptive field.
 
 Contrast response analysis is done similarly to the one introduced in
-Millman et al., eLife 2020 (https://elifesciences.org/articles/55130). Namely, the
+Millman et al., eLife 2020 (<https://elifesciences.org/articles/55130>). Namely, the
 responses to contrast was fit with 3 different models (rising sigmoid (high-pass),
 falling sigmoid (low-pass), and a product of rising and falling sigmoids (band-pass)) and used
 Akaike Information Criterion (AIC) to determine which model best explains the response.

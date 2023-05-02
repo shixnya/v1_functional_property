@@ -15,9 +15,10 @@ print(cache.get_all_session_types())
 
 sessions = cache.get_session_table()
 bo_sessions = sessions[sessions.session_type == "brain_observatory_1.1"]
-# len(sessions)
+non_bo_sessions = sessions[sessions.session_type != "brain_observatory_1.1"]
+print("# total sessions: " + str(len(sessions)))
 print("# Brain Observatory 1.1 sessions: " + str(len(bo_sessions)))
-
+print("# Non-Brain Observatory sessions: " + str(len(non_bo_sessions)))
 
 # session = cache.get_session_data(bo_sessions.index.values[7])
 # session.stimulus_presentations.stimulus_name.unique()
@@ -35,13 +36,16 @@ def get_spontaneous_fr(session, where=-1):
     units = session.units
     v1unit_id = units.index[units.ecephys_structure_acronym.str.contains("VIS")]
     spont_table = session.get_stimulus_table(["spontaneous"])
-    long_spont = spont_table[spont_table.duration > 200]
+    long_spont = spont_table[spont_table.duration > 210]
     # the long spontaneous period is the last long one in the BO session
     last_long_id = long_spont.index[where]
-    spont_table.loc[last_long_id]
-    spont_table.index
+    # spont_table.loc[last_long_id]
+    # spont_table.index
 
-    t_range = [10.0, 300.0]
+    # take the rate from long duration if available.
+    stim_duration = spont_table.loc[last_long_id].duration
+    t_range = [5.0, stim_duration - 5.0]
+    # t_range = [10.0, 210.0]
     duration = t_range[1] - t_range[0]
     counts = session.presentationwise_spike_counts(
         t_range, stimulus_presentation_ids=[last_long_id], unit_ids=v1unit_id
@@ -75,4 +79,52 @@ alldf_mp = pool.map(
 
 df_all = pd.concat(alldf_mp)
 df_all.to_csv("last_spontaneous_rate2.csv")
+
+
+# %% debugging code
+
+session = cache.get_session_data(bo_sessions.index.values[7])
+spfr = get_spontaneous_fr(session)
+
+# %%
+# do it for non BO sessions
+session = cache.get_session_data(non_bo_sessions.index.values[0])
+
+# %%
+spfr = get_spontaneous_fr(session)
+session.get_stimulus_table(["spontaneous"])
+
+# %% dubugging code
+units = session.units
+units
+v1unit_id = units.index[units.ecephys_structure_acronym.str.contains("VIS")]
+v1unit_id
+spont_table = session.get_stimulus_table(["spontaneous"])
+long_spont = spont_table[spont_table.duration > 210]
+# the long spontaneous period is the last long one in the BO session
+where = 0
+last_long_id = long_spont.index[where]
+# spont_table.loc[last_long_id]
+# spont_table.index
+
+# take the rate from long duration if available.
+stim_duration = spont_table.loc[last_long_id].duration
+t_range = [5.0, stim_duration - 5.0]
+# t_range = [10.0, 210.0]
+duration = t_range[1] - t_range[0]
+counts = session.presentationwise_spike_counts(
+    t_range, stimulus_presentation_ids=[last_long_id], unit_ids=v1unit_id
+)
+
+
+fr = counts / duration  # to make it FR
+fr_df = fr.to_dataframe()
+fr_df = fr_df.reset_index(level=[0, 1])
+fr_df = fr_df.rename(columns={"spike_counts": "firing_rate_sp"})
+fr_df = fr_df[["firing_rate_sp"]]
+fr_df.firing_rate_sp.describe()
+
+# %%
+all_units = cache.get_units()
+all_units.ecephys_session_id.value_counts()[bo_sessions.index.values[7]]
 
