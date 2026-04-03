@@ -1,0 +1,21 @@
+name: neuropixels_osi_dsi
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8,<3.12
+  - pandas>=1.3
+  - numpy>=1.20
+  - pip
+  # ------------------------------------------------------------------
+  # The packages below are only needed to regenerate the *upstream*
+  # input files (cortical_metrics_1.4.csv, functional_connectivity_2Hz.csv)
+  # from the raw Allen Institute Neuropixels data cache.  They are NOT
+  # required for the OSI/DSI v4 pipeline itself.
+  # ------------------------------------------------------------------
+  # - allensdk>=2.13
+  # - scikit-learn
+  # - matplotlib
+  # - seaborn
+  # - tqdm
+  # - tables          # PyTables, needed for pd.read_hdf / to_hdf
