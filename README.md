@@ -119,17 +119,13 @@ The pipeline requires only **Python ≥ 3.8**, **pandas**, and **numpy**.
 | File | Included in repo? | How it was generated |
 |------|-------------------|----------------------|
 | `cortical_metrics_1.4.csv` | **Yes** | [`misc/generate_cortical_metrics.py`](misc/generate_cortical_metrics.py) (see [Upstream data](#upstream-data-provenance)) |
-| `functional_connectivity_2Hz.csv` | **No** — must be obtained separately | Extracted from Allen Institute Neuropixels FC sessions (see [Upstream data](#upstream-data-provenance)) |
+| `functional_connectivity_2Hz.csv` | **Yes** | Extracted from Allen Institute Neuropixels FC sessions (see [Upstream data](#upstream-data-provenance)) |
 
-`functional_connectivity_2Hz.csv` contains firing-rate statistics from the
-Functional Connectivity session type (drifting gratings at 2 Hz, 0.8 contrast).
-If you do not have this file, see the [Upstream data](#upstream-data-provenance)
-section below for how to regenerate it from the Allen SDK cache.
+> **Note:** For the FC dataset, because the presented gratings were 4 directions instead of 8 directions, only firing rate statistics were taken, not direction/orientation selectivity measures.
 
 ### Reproducing the results
 
-Place `functional_connectivity_2Hz.csv` in the repository root alongside
-`cortical_metrics_1.4.csv`, then run:
+Both input files are included in this repository. From the repository root, run:
 
 ```bash
 bash run_pipeline.sh
