@@ -254,15 +254,19 @@ walkthrough of how `cortical_metrics_1.4.csv` is assembled and summarised.
 
 #### `functional_connectivity_2Hz.csv`
 
-Produced by extracting firing-rate statistics from the FC session type
+Produced by [`misc/functional_connectivity_2Hz.py`](misc/functional_connectivity_2Hz.py),
+which extracts firing-rate statistics from the FC session type
 (drifting gratings at 2 Hz temporal frequency, 0.8 contrast, 75 repeats)
 for all visual-cortex neurons.  Each FC session is processed independently
 (spike counts in 0–2 s stimulus windows, significance via quasi-Poisson test)
 and the per-session results are concatenated.
 
-The extraction script (`functional_connectivity_2Hz.py`, kept in the
-development directory) requires:
-```python
-from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProjectCache
+To regenerate from the raw data cache:
+
+```bash
+python misc/functional_connectivity_2Hz.py --manifest /path/to/ecephys_cache_dir/manifest.json
 ```
-and a local manifest pointing to the downloaded Neuropixels cache.
+
+This requires `allensdk`, `tqdm`, `tables` (PyTables), and a local copy of the
+Neuropixels data cache (~100 GB).  The significance test uses
+[`misc/lazyscience.py`](misc/lazyscience.py) (quasi-Poisson test).

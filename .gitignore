@@ -1,2 +1,17 @@
 .ipynb_checkpoints
 .*
+__pycache__/
+
+# Pipeline-generated intermediate files
+OSI_DSI_neuropixels_v3.csv
+OSI_DSI_neuropixels_LM_v3.csv
+functional_connectivity_2Hz_with_cell_types.csv
+l6_sst_cells.csv
+
+# Pipeline output files
+OSI_DSI_neuropixels_v4.csv
+OSI_DSI_neuropixels_V1_v4.csv
+OSI_DSI_neuropixels_LM_v4.csv
+
+# Per-session HDF5 cache (from functional_connectivity_2Hz.py)
+fc_h5s/
