@@ -4,6 +4,8 @@ Functional properties of different cell types in the primary visual cortex (V1) 
 
 Please look at 'cortical_metric_table.ipynb' to see how the table is generated.
 
+> **Note:** Running `cortical_metric_table.ipynb` requires the optional dependencies listed (but commented out) in `environment.yml` (`allensdk`, `scikit-learn`, `matplotlib`, `seaborn`, `tqdm`, `tables`) and a local copy of the Allen Institute Neuropixels data cache (~100 GB). These are **not** needed to run the OSI/DSI v4 pipeline via `run_pipeline.sh`.
+
 ## Example table (median)
 
 ![median_table](median_table1.2.png)

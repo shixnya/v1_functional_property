@@ -127,7 +127,7 @@ def main():
         # Back-fill cell_type from cortical metrics when possible
         if "cell_type" in missing_v3_cols and len(new_filtered_indices) > 0:
             try:
-                metrics_df = pd.read_csv("cortical_metrics_1.4.csv")
+                metrics_df = pd.read_csv("cortical_metrics_1.4.csv", low_memory=False)
                 metrics_df["ecephys_unit_id"] = (
                     metrics_df["ecephys_unit_id"].astype(int)
                 )
@@ -168,7 +168,7 @@ def main():
 
     # --- Attach natural-scenes firing rate from cortical metrics ---
     try:
-        metrics_df_all = pd.read_csv("cortical_metrics_1.4.csv")
+        metrics_df_all = pd.read_csv("cortical_metrics_1.4.csv", low_memory=False)
         metrics_df_all["ecephys_unit_id"] = (
             metrics_df_all["ecephys_unit_id"].astype(int)
         )

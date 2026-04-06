@@ -81,8 +81,6 @@ if l6_sst_count > 0:
                       'max_mean_rate(Hz)', 'Ave_Rate(Hz)',
                       'response_significance', 'is_responsive']].head(10))
 
-    l6_sst_df.to_csv("l6_sst_cells.csv")
-    print("Saved L6 SST data to l6_sst_cells.csv")
 
 if has_cell_type.sum() > 0:
     typed_cells = merged_df[has_cell_type]

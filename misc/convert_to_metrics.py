@@ -49,7 +49,7 @@ def main():
     out_name = args.output or f"OSI_DSI_neuropixels_{target_area}_v3.csv"
 
     # --- Load metrics table ---
-    df_all = pd.read_csv(args.metrics, index_col=0)
+    df_all = pd.read_csv(args.metrics, index_col=0, low_memory=False)
     print(f"Loaded {len(df_all)} rows from {args.metrics}")
 
     # --- Selection rule ---
