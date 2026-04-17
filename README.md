@@ -107,6 +107,10 @@ cortical_metrics_1.4.csv
                                                                    ──► OSI_DSI_neuropixels_LM_v4.csv
 ```
 
+### System requirements
+
+- **Operating system:** Linux is officially tested. macOS may work but is untested. No GPU is required; the OSI/DSI v4 pipeline is CPU-only and runs on a laptop.
+
 ### Environment setup
 
 ```bash
